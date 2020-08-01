@@ -2,14 +2,37 @@
 <html>
     <head>
         <title>JavaScript Practice Assignment 1</title>
+        <style>
+.Register{
+  border: 2px solid black;
+  width: 40%;
+  margin-top: 20px;
+  margin-bottom: 29px;
+  margin-left: 5%;
+  padding-bottom: 15px;
+  
+  color: black;
+  background-color: rgb(151, 211, 211);
+}
+label{
+    
+    font-weight: bold;
+    
+}
+h2{
+    margin-left: 5%;
+}
+        </style>
     </head>
     <body>
         <img src="Assign.PNG" alt="Assignment" width="85%" height="400px" style="margin-left: 5%;">
+        <h2 style="color: rgb(201, 82, 82);">Admission Process[for year 2020] :</h2>
     <h2 style="color: rgb(201, 82, 82);">Enter Your Credentials :</h2>
-        <form name="prn" onSubmit="return checkDetails();">
+     
+        <form class="Register" name="prn" onSubmit="return checkDetails();">
             <ul style="list-style-type:none;">
-                <li><label for="name">Name of Student:</label></li>
-                <li><input type="text" style="margin: 10px;" id="name" name="name" size="50" /></li>
+                <li><label for="name">Name of Student:[Fname Lastname]</label></li>
+                <li><input placeholder="FirstName   LastName" type="text" style="margin: 10px;" id="name" name="name" size="45" /></li>
                 <li><label for="branch">Branch:</label></li>
                 <li><select id="branch" name="branch">
                     <option selected="" value="Default">(Please select your Branch)</option>
@@ -19,8 +42,19 @@
                     <option value="EX">Electronics</option>
                     <option value="ME">Mechanical</option>
                     </select>
+                </li><br>
+                <li><label for="batch">Batch:</label></li>
+                <li><select id="batch" name="batch">
+                   
+                    <option value="01">01</option>
+                    <option value="02">02</option>
+                    <option value="03">03</option>
+                    <option value="04">04</option>
+                    
+                    </select>
                 </li>
-                <li><input type="submit" style="margin: 10px;" name="submit" value="Submit" /></li>
+                
+                <li><input type="submit" style="margin: 10px;" name="submit" value="Generate PRN" /></li>
             </ul>
         </form>
         <p>Students:</p>
@@ -30,10 +64,13 @@
             {
                 var Name = document.prn.name;
                 var Branch = document.prn.branch;
+                var bno=document.prn.batch;
                 
                 if(allLetter(Name))
                 {
-                    if(branchselect(Branch)) {}
+                    if(branchselect(Branch)) {
+                        
+                    }
                 }
                 return false;
             }
@@ -46,7 +83,7 @@
                 }
                 else   
                 {   
-                    alert('Name must have alphabet characters only');
+                    alert('Invalid Input');
                     Name.focus();
                     return false;
                 }      
@@ -80,14 +117,11 @@
             {
                 arrayname[i] = document.getElementById("name").value;
                 arraybranch[i] = document.getElementById("branch").value;
-                arraybatch[i] = addZerobatch(i+1);
+                arraybatch[i] = document.getElementById("batch").value;
                 arrayroll[i] = addZeroroll(i+1);
                 arrayprn[i] = str+arraybranch[i]+arraybatch[i]+arrayroll[i];
 
-                function addZerobatch(num1)
-                {
-                    return num1 < 10 ? `0${num1}`:num1;
-                }
+              
                 function addZeroroll(num)
                 {
                     if(num<10)
@@ -119,10 +153,11 @@
                 document.getElementById("prnDisplay").innerHTML = disp;
                 document.getElementById("name").value = "";
                 document.getElementById("branch").value = "Default";
+
             }
         </script>
     </body>
     <footer>
-        <p>&copy; Copyright 2020, Suryawanshi Rohit</p>
+        <p style="text-align: center; color: rgb(202, 132, 26);"><b>&copy; Copyright 2020, Suryawanshi Rohit</b></p>
     </footer>
 </html>
